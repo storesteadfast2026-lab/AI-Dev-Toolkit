@@ -1,0 +1,53 @@
+{
+  "storage": {
+    "temp_folder": "%APP_HOME%\\TEMP",
+    "output_folder": "%APP_HOME%\\OUTPUT",
+    "logs_folder": "%APP_HOME%\\LOGS",
+    "auto_clean_temp_after_success": false,
+    "archive_folder": "%USERPROFILE%\\Downloads\\AOM_Archive"
+  },
+  "applications": [
+    {
+      "id": "PON",
+      "name": "PON Bikes Automation",
+      "application_path": "C:\\Docker-Projects\\PON_Bikes_Automation",
+      "package_folder": "%USERPROFILE%\\Downloads",
+      "verified_package_folder": "%APP_HOME%\\Packages\\PON\\Verified",
+      "package_patterns": [
+        "PON*.zip"
+      ],
+      "http_url": "http://localhost:8001",
+      "dr_toolkit": "C:\\Docker-Projects\\DR_Toolkit_CALC_PON",
+      "dr_scripts": {
+        "backup": "01_Backup_PON.bat",
+        "verify_backup": "02_Verify_Latest_PON.bat",
+        "test_restore": "03_Test_Restore_Latest_PON.bat",
+        "destroy_test": "04_Destroy_Test_PON.bat",
+        "list_snapshots": "05_List_Snapshots.bat",
+        "full_recovery": "06_Create_FULL_Recovery_Folder.bat",
+        "continuity_snapshot": "07_Create_Continuity_Snapshot_PON.bat"
+      }
+    },
+    {
+      "id": "CALC",
+      "name": "CALC / Calculator App",
+      "application_path": "C:\\Docker-Projects\\Freight-Calc-v1.6",
+      "package_folder": "%USERPROFILE%\\Downloads",
+      "verified_package_folder": "%APP_HOME%\\Packages\\CALC\\Verified",
+      "package_patterns": [
+        "CALC*.zip"
+      ],
+      "http_url": "http://localhost:8000",
+      "dr_toolkit": "C:\\Docker-Projects\\DR_Toolkit_CALC_PON",
+      "dr_scripts": {
+        "backup": "01_Backup_CALC.bat",
+        "verify_backup": "02_Verify_Latest_CALC.bat",
+        "test_restore": "03_Test_Restore_Latest_CALC.bat",
+        "destroy_test": "04_Destroy_Test_CALC.bat",
+        "list_snapshots": "05_List_Snapshots.bat",
+        "full_recovery": "06_Create_FULL_Recovery_Folder.bat",
+        "continuity_snapshot": "07_Create_Continuity_Snapshot_CALC.bat"
+      }
+    }
+  ]
+}

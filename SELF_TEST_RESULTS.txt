@@ -1,0 +1,46 @@
+APPLICATION OPERATIONS MANAGER PS v1.0.3 - BUILD VALIDATION
+=========================================================
+
+DESIGN DECISION
+---------------
+Python/PySide/QProcess child execution has been removed completely.
+The full GUI itself now runs in Windows PowerShell 5.1 / Windows Forms.
+
+The child-process engine uses the same design manually proven on the target Windows PC:
+PowerShell GUI -> .NET ProcessStartInfo -> cmd.exe -> CMD wrapper -> BAT -> .log.
+
+BUILD-TIME CHECKS COMPLETED
+---------------------------
+[PASS] Manager.ps1 balanced strings / parentheses / brackets / braces.
+[PASS] Critical .NET ProcessStartInfo markers present.
+[PASS] UseShellExecute=false present.
+[PASS] CreateNoWindow=true present.
+[PASS] Direct stdout+stderr redirection to one .log present.
+[PASS] Blank-line prefeed for simple PAUSE present.
+[PASS] Package extraction / SHA256 / safety-state logic present.
+[PASS] PON and CALC default configuration JSON parses.
+[PASS] Bundled PON non-destructive test ZIP contains all four declared operations.
+[PASS] AI handoff exposes real .log files for drag-and-drop.
+[PASS] Python, PySide6, QProcess, process_bridge.py and process_runner.py are not used.
+
+WINDOWS PREFLIGHT
+-----------------
+Open_Manager.bat automatically runs 00_Preflight.ps1 before opening the GUI.
+That preflight uses the real Windows PowerShell parser on Manager.ps1 and verifies
+required .NET assemblies, cmd.exe, config JSON and the bundled test package.
+
+WINDOWS EXECUTION CORE REFERENCE
+--------------------------------
+The exact Core Runner v0.3 source already proven manually on the target PC is included
+under PROVEN_CORE_REFERENCE.
+
+
+v1.0.3 additional checks
+------------------------
+[PASS] Removed arithmetic expression from New-Object Point constructor.
+[PASS] Static scan: no remaining New-Object constructor arguments contain arithmetic expressions.
+[PASS] Added -SmokeTest mode that builds the full Windows Forms UI and exits without showing it.
+[PASS] Preflight invokes the full UI-construction smoke test before launching the Manager.
+
+[PASS] All Point/Size constructor calls converted to `[System.Drawing.Point]::new(...)` / `[System.Drawing.Size]::new(...)`.
+[PASS] Static scan confirms zero remaining `New-Object System.Drawing.Point/Size(...)` calls.
